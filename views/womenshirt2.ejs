@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Womens pants</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+    <link rel="stylesheet" href="./public/style.css">
+</head>
+
+<body>
+
+    <section id="header">
+        <a href="#"><img src="./public/img/logo.png" class="logo" alt=""></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/mens">Men</a></li>
+                <li><a class="active" href="/womens">Women</a></li>
+                <li id="lg-bag"><a href="/cart"><i class="far fa-shopping-bag"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="/cart"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            <img class="shop-item-image" src="./public/img/products/f7.jpg" width="100%" id="MainImg" alt="">
+
+            <div class="small-img-group">
+                <div class="small-img-col">
+                    <img src="./public/img/products/f7.jpg" width="100%" class="small-img" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="single-pro-details">
+            <form action='/addToCart/womenshirt2' method='POST'>
+            <h6>Home / T-Shirt</h6>
+            <h4 class="shop-item-title">Womens Pants</h4>
+            <h2 class="shop-item-price">$139.00</h2>
+            <select name="size">
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+              <option>XL</option>
+          </select>
+            <input name="quantity" type="number" value="1">
+            <button id="cart-btn" class="normal">Add To Cart</button>
+            <h4>Product Details</h4>
+            <span>Super comfy pants</span>
+        </div>
+        </section>
+    </section>
+
+    <footer class="section-p1">
+        <div class="copyright">
+            <p>© Shopping Site</p>
+        </div>
+    </footer>
+
+    <script>
+        var MainImg = document.getElementById("MainImg");
+        var smallimg = document.getElementsByClassName("small-img");
+
+        smallimg[0].onclick = function() {
+            MainImg.src = smallimg[0].src;
+        }
+        smallimg[1].onclick = function() {
+            MainImg.src = smallimg[1].src;
+        }
+        smallimg[2].onclick = function() {
+            MainImg.src = smallimg[2].src;
+        }
+        smallimg[3].onclick = function() {
+            MainImg.src = smallimg[3].src;
+        }
+    </script>
+
+
+    <script src="./public/script.js"></script>
+    <script src="./public/item.js"></script>
+</body>
+
+</html>
