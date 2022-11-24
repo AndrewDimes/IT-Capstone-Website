@@ -14,13 +14,13 @@ const mysqlConnection = () => {
 };
 
 // Create a connection to the database
-const connection = mysql.createConnection(connectionDetails());
+const connection = mysql.createConnection(mysqlConnection());
 
 // open the MySQL connection
 connection.connect((error) => {
   if (error) throw error;
   // eslint-disable-next-line no-console
-  console.log(`Successfully connected to the database with ${connectionDetails()}.`);
+  console.log(`Successfully connected to the database with ${mysqlConnection()}.`);
 });
 
   module.exports = mysqlConnection;
