@@ -44,9 +44,7 @@ app.use('/', indexRoutes);
 app.use(function (req, res, next) {
   next(createError(404))
 })
-app.listen(5555, function () {
-  console.log('Node server running on port : 5555')
-})
+app.listen(process.env.PORT || 3000)
 // error
 app.use(function (err, req, res, next) {
   res.locals.message = err.message
