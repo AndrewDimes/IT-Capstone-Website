@@ -2,7 +2,7 @@ const mysql = require('mysql');
 require('dotenv').config();
 
 // Sets the right connection details for the connection string available
-const connectionDetails = () => {
+const mysqlConnection = () => {
   // Check if heroku CLEARDB_DATABASE_URL is available
   if (process.env.CLEARDB_DATABASE_URL) { return `${process.env.CLEARDB_DATABASE_URL}`; }
   return {
