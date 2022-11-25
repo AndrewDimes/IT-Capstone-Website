@@ -33,7 +33,7 @@ Router.post('/register', function(req, res){
     const username = req.body.username;
     const email = req.body.email;
     const pw = req.body.password;
-    const sql = "INSERT INTO users (email, username, password ) VALUES ('" + username + "','" + email + "', '" + pw + "')";
+    const sql = "INSERT INTO users (email, username, password ) VALUES ('" + email + "','" + username + "', '" + pw + "')";
     mysqlConnection.query(sql,(err, rows, fields) => {
         if (!err) {
             res.redirect('/home');
@@ -53,15 +53,29 @@ Router.post('/checkout', function(req, res){
     const city = req.body.city;
     const state = req.body.state;
     const zip = req.body.zip;
-    const sql = "INSERT INTO orders (name, email, address, city, state, zip ) VALUES ('" + name + "','" + email + "', '" + address + "', '" + city + "', '" + state + "', '" + zip + "')";
-    mysqlConnection.query(sql,(err, rows, fields) => {
-        if (!err) {
-            res.redirect('/done');
-        } else {
-            console.log(err.message);
-            res.redirect('/done');
-
+    let total = 0;
+    let items = "";
+    
+    mysqlConnection.query('SELECT * FROM products ORDER BY id desc', function (err, rows) {
+        for(let i=0; i<rows.length;i++){
+           console.log(rows[i] + "inside")
+           total = total +(rows[i].price * rows[i].quantity);
+           items = items + ", " + rows[i].name;
         }
+        const sql = "INSERT INTO orders (name, email, address, city, state, zip, items, price ) VALUES ('" + name + "','" + email + "', '" + address + "', '" + city + "', '" + state + "', '"+ zip + "', '"+ items + "', '" + total + "')";
+        mysqlConnection.query(sql,(err, rows, fields) => {
+            if (!err) {
+                res.redirect('/done');
+            } else {
+                console.log(err.message);
+                res.redirect('/done');
+    
+            }
+        })
+    });
+    const sql = "TRUNCATE TABLE products"
+    mysqlConnection.query(sql,(err, rows, fields) => {
+
     })
 
 });
